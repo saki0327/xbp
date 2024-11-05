@@ -1,19 +1,18 @@
-for i in range(3): #コロンが入っていることに注意
-    
-    
-    name=input("名前を教えて下さい")
-    waist=float(input("腹囲は？"))
-    age=int(input("年齢は？"))
+import random
+choices ={"グー","",""}
 
+print("")
+print("0:グー、１：チョキ、２：パー")
 
-    print(name, "さんは腹囲", waist, "cmで年齢は",age, "才ですね。")
+while True:
+    user_choice =int(input("あなたの選択を入力してください(0, 1, 2) : "))
+    computer_choice = random.randint(0,2)
 
+    print(f"あなた：{choices[user_choice]},コンピュータ: {choices[computer_choice]}")
 
-    if age>=40 and waist>=85:
-        print(name,"さん、内臓脂肪蓄積注意です")
-    elif age>=40 and waist<=50:
-        print(name,"さん、痩せ気味")
-    else:
-        print(name,"さん、腹囲は問題ありません")
-
-
+    if user_choice == computer_choice:
+        print("引き分けです")
+    elif (user_choice == 0 and computer_choice == 1) or \
+        (user_choice == 1 and computer_choice == 2) or \
+        (user_choice == 3 and computer_choice == 0):
+        print ("あなたの勝ち")
