@@ -1,18 +1,81 @@
-import random
-choices ={"グー","",""}
+def escape_room_game():
+    print("あなたは閉じ込められた部屋にいます。部屋にはいくつかの手がかりが隠されています。")
+    print("その手がかりを元に、脱出の方法を見つけてください。\n")
 
-print("")
-print("0:グー、１：チョキ、２：パー")
+    # 部屋の情報とアイテム
+    items = {
+        "鍵": False,
+        "メモ": False,
+        "金庫": False,
+        "扉": False
+    }
 
-while True:
-    user_choice =int(input("あなたの選択を入力してください(0, 1, 2) : "))
-    computer_choice = random.randint(0,2)
+    clues = [
+        "部屋の隅に小さなメモが置かれている。",
+        "金庫には4桁の番号が必要なようだ。",
+        "扉には鍵がかかっていて、開けるには鍵が必要だ。",
+        "メモに書かれているのは「金庫の番号は1234」だ。"
+    ]
+    
+    # ゲーム進行状況
+    has_key = False
+    opened_safe = False
+    safe_code = "1234"  # 金庫の番号
+    
+    # 手がかりを管理する変数
+    clue_index = 0  # どの手がかりを表示したか
 
-    print(f"あなた：{choices[user_choice]},コンピュータ: {choices[computer_choice]}")
+    while True:
+        print("\n現在の状況:")
+        print("1. メモを見る")
+        print("2. 金庫を開ける")
+        print("3. 扉を開ける")
+        print("4. 部屋を調べる")
+        print("5. ゲーム終了")
 
-    if user_choice == computer_choice:
-        print("引き分けです")
-    elif (user_choice == 0 and computer_choice == 1) or \
-        (user_choice == 1 and computer_choice == 2) or \
-        (user_choice == 3 and computer_choice == 0):
-        print ("あなたの勝ち")
+        choice = input("選択肢を入力してください（1/2/3/4/5）：")
+
+        if choice == "1":
+            if clue_index < len(clues):  # 手がかりが残っていれば表示
+                print(clues[clue_index])  # 現在の手がかりを表示
+                clue_index += 1  # 次の手がかりに進む
+            else:
+                print("もう手がかりは残っていません。")
+            
+            # メモを見た状態にする
+            items["メモ"] = True  # メモを見たことにする
+
+        elif choice == "2":
+            if not items["メモ"]:
+                print("金庫を開けるためにはメモを見て、番号を知る必要があります。")
+            else:
+                # メモに書かれた番号を入力する
+                code = input("金庫の4桁の番号を入力してください: ")
+                if code == safe_code:
+                    print("金庫が開きました！中に鍵が入っています。")
+                    has_key = True
+                    items["金庫"] = True  # 金庫を開けたことにする
+                else:
+                    print("番号が違います。もう一度試してみてください。")
+
+        elif choice == "3":
+            if not has_key:
+                print("扉は鍵がかかっています。鍵が必要です。")
+            else:
+                print("扉を開けることができました！脱出成功です！")
+                break
+
+        elif choice == "4":
+            print("部屋の中には、メモと金庫があります。金庫の番号を思い出して調べてみましょう。")
+        
+        elif choice == "5":
+            print("ゲームを終了します。ありがとうございました！")
+            break
+
+        else:
+            print("無効な選択肢です。もう一度選んでください。")
+
+# ゲーム開始
+if __name__ == "__main__":
+    escape_room_game()
+
