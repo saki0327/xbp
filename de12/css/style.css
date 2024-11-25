@@ -24,13 +24,17 @@ logotohome img{
 html, body {
 	font-size: 16px;
 	font-family: sans-serif;
-	color: #393939;
+	color: #333333;
     margin-left: 15px;
     margin-bottom: 40px;
-	background: #FFFFFF	;
+	background: #DCDCDC	;
 }
 h1{
     text-indent: 0em;
+    margin: 2em auto;
+ padding: 1em;
+ width: 90%;
+ 
 }
 h2{
     margin-left: 1em;
@@ -61,25 +65,66 @@ span.blackback{
     font-family: "游ゴシック","YuGothic","Yu Gothic","游ゴシック体"; font-weight: 500;
     font-weight: bold;
     clear: both;
+    float: right;
 }
 .hp1{
     font-size: 25px;
     margin: 30px;
-    float: left;
+    float: right;
 }
 .hp2{
     font-size: 25px;
     margin: 30px;
-    float: left;
+    float: right;
 }
 .test{
     font-size: 25px;
     margin: 30px;
-    float: left;
+    float: right;
 }
 .f2{
     font-size: 20px;
-    font-family: "游ゴシック","YuGothic","Yu Gothic","游ゴシック体"; font-weight: 500;
+    font-family: "游ゴシック","YuGothic","Yu Gothic","游ゴシック体"; font-weight: 800; font-size: larger;
     margin: 90px;
-    float: right;
+    float: left;
+    ul{
+        color: #DCDCDC;
+        border-top: solid #8FBC8F 5px;/*上のボーダー*/
+        border-bottom: solid #8FBC8F 5px;/*下のボーダー*/
+        padding: 0.5em 0 0.5em 1.5em;
+      }
+      
+      ul li {
+        line-height: 1.5;
+        padding: 0.5em 0;
+      }
+}
+a{
+    color: #4682B4;
+}
+.f3{
+    font-family: "游ゴシック","YuGothic","Yu Gothic","游ゴシック体"; font-weight: 500;
+}
+.box17{
+    font-family: "游ゴシック","YuGothic","Yu Gothic","游ゴシック体"; font-weight: 500;
+    margin:2em 0;
+    position: relative;
+    padding: 0.5em 1.5em;
+    border-top: solid 2px black;
+    border-bottom: solid 2px black;
+}
+.box17:before, .box17:after{
+    content: '';
+    position: absolute;
+    top: -10px;
+    width: 2px;
+    height: -webkit-calc(100% + 20px);
+    height: calc(100% + 20px);
+    background-color: black;
+}
+.box17:before {left: 10px;}
+.box17:after {right: 10px;}
+.box17 p {
+    margin: 0; 
+    padding: 0;
 }
